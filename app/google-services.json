@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "43299217623",
+    "project_id": "agendamento-barbearia-57611",
+    "storage_bucket": "agendamento-barbearia-57611.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43299217623:android:5a1f8520ccd23688db9092",
+        "android_client_info": {
+          "package_name": "com.example.aulaandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfuXNBR8uFW8Xd4TXill3CsrHiBq9sPbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
