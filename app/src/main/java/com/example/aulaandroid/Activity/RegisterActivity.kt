@@ -4,64 +4,56 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.aulaandroid.R
-import com.example.aulaandroid.databinding.ActivityLoginBinding
+import com.example.aulaandroid.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginActivity : AppCompatActivity() {
+class RegisterActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_login)
-
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnVoltarLogin.setOnClickListener{
+        binding.btnVoltarRegister.setOnClickListener{
             finish()
         }
 
         auth = FirebaseAuth.getInstance()
 
-        if (auth.currentUser != null){
-            startActivity(Intent(this,DashboardActivity::class.java))
-            finish()
-        }
-
-
-        binding.loginBtn.setOnClickListener {
+        binding.regiterBtn2.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val senha = binding.etSenha.text.toString()
 
-            if (email.isEmpty() || senha.isEmpty()) {
+            if (email.isEmpty() || senha.isEmpty() ) {
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            auth.signInWithEmailAndPassword(email,senha).addOnCompleteListener(this) { task ->
+
+            auth.createUserWithEmailAndPassword(email,senha).addOnCompleteListener(this) { task ->
                 if(task.isSuccessful){
                     val user = auth.currentUser
                     Toast.makeText(
-                        this@LoginActivity,
-                        "Login realizado com Sucesso! Bem-vindo: ${user?.email}",
+                        this@RegisterActivity,
+                        "Cadastro realizado com Sucesso! Bem-vindo: ${user?.email}",
                         Toast.LENGTH_SHORT
                     ).show()
-                    startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                    startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
                     finish()
-
-                }else {
+                }else{
                     Toast.makeText(
-                        this@LoginActivity,
-                        "Falha no Login: ${task.exception?.message}",
+                        this@RegisterActivity,
+                        "Falha no cadastro: ${task.exception?.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
         }
+
 
     }
 }

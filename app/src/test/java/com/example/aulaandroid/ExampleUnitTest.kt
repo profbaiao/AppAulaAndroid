@@ -1,4 +1,4 @@
-package com.example.agendamentobarbearia
+package com.example.aulaandroid
 
 import org.junit.Test
 

@@ -1,14 +1,18 @@
-package com.example.aulaandroid.Activity
+package com.example.aulaandroid.Fragments
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aulaandroid.Adapter.Categoria
 import com.example.aulaandroid.Adapter.Produto
 import com.example.aulaandroid.R
 
-class DashboardActivity : AppCompatActivity() {
+
+class HomeFragment : Fragment() {
 
     private lateinit var categoriaRecyclerView: RecyclerView
     private lateinit var categoriaAdapter: Categoria
@@ -20,10 +24,17 @@ class DashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
 
-        categoriaRecyclerView = findViewById(R.id.categoriaRV)
-        produtoRecyclerView = findViewById(R.id.topProdutosRV)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        categoriaRecyclerView = view.findViewById(R.id.categoriaRV)
+        produtoRecyclerView = view.findViewById(R.id.topProdutosRV)
 
         categoriaImageList = listOf(
             R.drawable.standing_5,
@@ -45,15 +56,23 @@ class DashboardActivity : AppCompatActivity() {
         )
 
         categoriaAdapter = Categoria(categoriaImageList)
-        categoriaRecyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+
+
+        categoriaRecyclerView.layoutManager = LinearLayoutManager(
+            activity,
+            LinearLayoutManager.HORIZONTAL, false
+        )
         categoriaRecyclerView.adapter = categoriaAdapter
 
         produtoAdapter = Produto(produtoImageList)
-        produtoRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+        produtoRecyclerView.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         produtoRecyclerView.adapter = produtoAdapter
 
 
 
-
+        return view
     }
+
+
 }

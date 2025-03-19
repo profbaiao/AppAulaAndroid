@@ -73,7 +73,7 @@
         android:background="@drawable/btn_transparente"
         android:text="Login"
         android:textAllCaps="false"
-        android:textColor="#700BEF"
+        android:textColor="@color/default_color"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
