@@ -11,7 +11,7 @@
         android:title="Lista"/>
 
     <item
-        android:id="@+id/page_5"
+        android:id="@+id/page_3"
         android:icon="@drawable/favorite_24"
         android:title="Perfil"/>
 

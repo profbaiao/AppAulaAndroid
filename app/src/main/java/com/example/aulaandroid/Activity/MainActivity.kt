@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.aulaandroid.Fragments.HomeFragment
 import com.example.aulaandroid.Fragments.ListaFragment
+import com.example.aulaandroid.Fragments.PerfilFragment
 import com.example.aulaandroid.R
 import com.example.aulaandroid.databinding.ActivityMainBinding
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.page_1 -> replaceFragment(HomeFragment())
                 R.id.page_2 -> replaceFragment(ListaFragment())
+                R.id.page_3 -> replaceFragment(PerfilFragment())
                 else ->{
 
                 }
